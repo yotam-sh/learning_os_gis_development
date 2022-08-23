@@ -1,6 +1,6 @@
 import os
-# import numpy
-# import pandas
+import numpy
+import pandas
 
 # Change workspace
 os.chdir(r'C:\Users\user\Desktop\PyForFun\geopandas\day_1_learning_pandas')
