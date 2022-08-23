@@ -1,6 +1,6 @@
 import os
 import numpy
-import pandas
+import pandas as pd
 
 # Change workspace
 os.chdir(r'C:\Users\user\Desktop\PyForFun\geopandas\day_1_learning_pandas')
@@ -10,3 +10,6 @@ print(f'File list:{file_list}')
 if len(file_list) == 1 and file_list[0].endswith('.csv'):
     f_path = f'{os.getcwd()}\\{file_list[0]}'
 
+dataframe = pd.read_csv(f_path)
+print(dataframe.shape)
+print(dataframe.info())
