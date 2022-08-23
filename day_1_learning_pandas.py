@@ -41,6 +41,16 @@ for num, col in enumerate(dataframe.columns):
         row_2022[num] = dataframe[col][3]
         row_totals[num] = dataframe[col][4]
 
-for dict in [row_2019, row_2020, row_2021, row_2022, row_totals, yearly_totals]:
-    print(dict)
+# Below doesn't work, trying to find highest salary per month in all years
+if len(row_2019) == len(row_2020) == len(row_2021) == len(row_2022):
+    for i in range(1, len(row_2019) - 1):
+        check_list = [row_2019.get(i), row_2020.get(i), row_2021.get(i), row_2022.get(i)]
+        for num, j in enumerate(check_list):
+            if num == 0 and j == numpy.float64():
+                month_max = j
+            elif j == numpy.float64() and j > month_max:
+                month_max = j
 
+        # monthly_max = max(check_list)
+        # print(check_list)
+        print(f'Highest salary earned in month #{i} is {month_max}\n')
