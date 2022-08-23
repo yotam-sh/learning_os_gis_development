@@ -11,5 +11,13 @@ if len(file_list) == 1 and file_list[0].endswith('.csv'):
     f_path = f'{os.getcwd()}\\{file_list[0]}'
 
 dataframe = pd.read_csv(f_path)
-print(dataframe.shape)
-print(dataframe.info())
+# print(dataframe.shape)
+# print('\t')
+# print(dataframe.info())
+
+# loop through the table in a col-by-col manner
+for num, col in enumerate(dataframe.columns):
+    if num == 0:
+        print(f'{col}\n')
+    else:
+        print(f'{col}\n{dataframe[col]}\n')
