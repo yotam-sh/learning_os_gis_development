@@ -6,6 +6,7 @@ classmates = {
     'first_name': ['Yotam', 'Shaked', 'Idan', 'Maia'],
     'last_name': ['Shavit', 'Yefet', 'Ben-Atar', 'Abeles'],
     'age': [26, 28, 27, 23],
+    'sex': ['Male', 'Male', 'Male', 'Female'],
     'profession': ['GIS Professional', 'GIS Analyst', 'GIS Analyst', 'Bartender']
 }
 
@@ -15,5 +16,7 @@ df = pd.DataFrame(classmates)
 # Print selected columns
 print(df[['first_name', 'age']])
 
-# Print selected rows
-print(df.iloc[[0, 1]])
+# Print selected rows - iloc
+print(df.iloc[[0, 1], 4])
+
+# 
