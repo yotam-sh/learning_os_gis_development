@@ -1,6 +1,7 @@
 # day 2
 
 import os
+import numpy as np
 import pandas as pd
 
 classmates = {
