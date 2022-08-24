@@ -10,4 +10,5 @@ classmates = {
 }
 
 df = pd.DataFrame(classmates)
-print(df)
+print(df['first_name'])
+print(type(df['first_name']))
