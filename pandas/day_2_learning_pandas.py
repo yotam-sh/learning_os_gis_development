@@ -36,3 +36,5 @@ scsv_path = os.path.normpath("\\".join([os.getcwd(), schema_csv]))
 df = pd.read_csv(wcsv_path)
 schema_df = pd.read_csv(scsv_path)
 
+# Print how many 'Yes' and 'No' answers there are to the 'Are you a Hobbyist coder' question --> Hobbyist from schema_csv
+print(df['Hobbyist'].value_counts())
