@@ -9,6 +9,11 @@ classmates = {
     'profession': ['GIS Professional', 'GIS Analyst', 'GIS Analyst', 'Bartender']
 }
 
+# Create a dataframe from the dictionary
 df = pd.DataFrame(classmates)
-print(df['first_name'])
-print(type(df['first_name']))
+
+# Print selected columns
+print(df[['first_name', 'age']])
+
+# Print selected rows
+print(df.iloc[[0, 1]])
