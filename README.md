@@ -2,4 +2,9 @@
 My personal learning repo, where I will put all my study files
 
 Tracking my progress as I learn various new libraries:
-23rd of August - Started learning Pandas
+- 23rd of August - Started learning Pandas
+
+Plan:
+- GeoPandas
+- Shapely
+- NumPy (?)
