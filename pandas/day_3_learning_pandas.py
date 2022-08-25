@@ -3,15 +3,21 @@
 import numpy as np
 import pandas as pd
 
-classmates = {
-    'first_name': ['Yotam', 'Shaked', 'Idan', 'Maya'],
-    'last_name': ['Shavit', 'Yefet', 'Ben-Atar', 'Abeles'],
-    'age': [26, 28, 27, 23],
-    'sex': ['Male', 'Male', 'Male', 'Female'],
-    'profession': ['GIS Professional', 'GIS Analyst', 'GIS Analyst', 'Bartender']
-}
+# Change working dir to path with required .csv
+os.chdir(r'C:\Users\user\Desktop\PyForFun\geopandas\day_2_pandas')
+# Get file list
+file_list = os.listdir(os.getcwd())
 
-df = pd.DataFrame(classmates)
-df.set_index(['first_name', 'last_name'], inplace=True)
+# Make sure our target work .csv is in the folder
+assert "survey_results_public.csv" == file_list[2], "work csv not found"
+work_csv = file_list[2]
+wcsv_path = os.path.normpath("\\".join([os.getcwd(), work_csv])) # set work csv path
 
-print(df.loc['Yotam'])
+# Make sure schema .csv is also in the folder
+assert "survey_results_schema.csv" == file_list[3], "schema csv not found"
+schema_csv = file_list[3]
+scsv_path = os.path.normpath("\\".join([os.getcwd(), schema_csv])) # set schema file path
+
+# Read the .csv files
+df = pd.read_csv(wcsv_path)
+schema_df = pd.read_csv(scsv_path)
