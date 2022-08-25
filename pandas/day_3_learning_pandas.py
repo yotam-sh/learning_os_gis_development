@@ -21,6 +21,6 @@ scsv_path = os.path.normpath("\\".join([os.getcwd(), schema_csv])) # set schema 
 
 # Read the .csv files
 df = pd.read_csv(wcsv_path, index_col='Respondent')
-schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index()
+schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index() # Sort by index 'Column'
 
 print(schema_df)
