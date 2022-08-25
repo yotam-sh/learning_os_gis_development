@@ -23,4 +23,7 @@ scsv_path = os.path.normpath("\\".join([os.getcwd(), schema_csv])) # set schema 
 df = pd.read_csv(wcsv_path, index_col='Respondent')
 schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index() # Sort by index 'Column'
 
-print(schema_df)
+# Set filter with three different columns
+filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+
+print(df.loc[filt, ['Hobbyist', 'ConvertedComp', 'LanguageWorkedWith']])
