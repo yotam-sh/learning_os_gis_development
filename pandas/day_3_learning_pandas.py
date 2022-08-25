@@ -1,5 +1,6 @@
 # Day 3
 
+import os
 import numpy as np
 import pandas as pd
 
