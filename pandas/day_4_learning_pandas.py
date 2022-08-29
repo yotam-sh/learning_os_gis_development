@@ -32,5 +32,8 @@ df.rename(columns={'first_name': 'first',
 # Add condition
 filt = (df['profession'].str.contains('GIS', na=False))
 
+# Make first names lowercase
+df['first'] = df['first'].str.lower()
+
 print(df[filt][['first', 'profession']])
 
