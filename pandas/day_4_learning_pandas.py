@@ -14,3 +14,9 @@ classmates = {
 
 # Create a dataframe from the dictionary
 df = pd.DataFrame(classmates)
+
+# Remap the field names
+df.rename(columns={'first_name': 'first',
+                   'last_name': 'last'}, inplace=True)
+
+print(df)
