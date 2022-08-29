@@ -32,4 +32,4 @@ df.at[0, 'profession'] = 'GIS Professional'
 # Add condition
 filt = (df['profession'].str.contains('GIS', na=False))
 
-print(df[filt]['first'])
+print(df[filt][['first', 'profession']])
