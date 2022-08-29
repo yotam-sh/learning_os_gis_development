@@ -24,7 +24,12 @@ df.rename(columns={'first_name': 'first',
 
 # Change profession to one classmate
 df.loc[0, 'profession'] = 'GIS Developer'
-print(df.loc[0, ['first', 'profession']])
+# print(df.loc[0, ['first', 'profession']])
 
 df.at[0, 'profession'] = 'GIS Professional'
-print(df.loc[0])
+# print(df.loc[0])
+
+# Add condition
+filt = (df['profession'].str.contains('GIS', na=False))
+
+print(df[filt]['first'])
