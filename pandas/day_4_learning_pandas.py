@@ -12,3 +12,5 @@ classmates = {
     'profession': ['GIS Professional', 'GIS Analyst', 'GIS Analyst', 'Bartender']
 }
 
+# Create a dataframe from the dictionary
+df = pd.DataFrame(classmates)
