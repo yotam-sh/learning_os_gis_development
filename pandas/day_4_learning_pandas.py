@@ -20,5 +20,8 @@ df.rename(columns={'first_name': 'first',
                    'last_name': 'last'}, inplace=True)
 
 # Add condition
-filt = (df['sex'] == 'Male')
-print(df.loc[filt])
+# filt = (df['sex'] == 'Male')
+
+# Change profession to one classmate
+df.loc[0, 'profession'] = 'GIS Developer'
+print(df.loc[0, ['first', 'profession']])
