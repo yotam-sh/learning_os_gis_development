@@ -1,5 +1,6 @@
 # Day 4
 
+from dataclasses import field
 import os
 import numpy as np
 import pandas as pd
@@ -26,4 +27,10 @@ schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index() # Sort by in
 # Set filter with three different columns
 filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
 
-print(df.loc[filt, ['Hobbyist', 'ConvertedComp', 'LanguageWorkedWith']])
+# print(df.loc[filt, ['Hobbyist', 'ConvertedComp', 'LanguageWorkedWith']])
+
+# Make column names uppercase
+df.columns = [x.upper() for x in df.columns]
+
+field_names = [x.upper() for x in ['Hobbyist', 'ConvertedComp', 'LanguageWorkedWith']]
+print(df.loc[filt, field_names])
