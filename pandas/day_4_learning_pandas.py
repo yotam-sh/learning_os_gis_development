@@ -19,4 +19,6 @@ df = pd.DataFrame(classmates)
 df.rename(columns={'first_name': 'first',
                    'last_name': 'last'}, inplace=True)
 
-print(df)
+# Add condition
+filt = (df['sex'] == 'Male')
+print(df.loc[filt])
