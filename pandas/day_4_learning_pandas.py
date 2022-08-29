@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 # Change working dir to path with required .csv
-os.chdir(r'C:\Users\user\Desktop\PyForFun\geopandas\day_2_pandas')
+os.chdir(r'C:\Users\yotam\Documents\Python\material\for_future_lessons\2019survey_copy')
 # Get file list
 file_list = os.listdir(os.getcwd())
 
