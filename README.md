@@ -7,4 +7,6 @@ Tracking my progress as I learn various new libraries:
 Plan:
 - GeoPandas
 - Shapely
-- NumPy (?)
+- NumPy
+- Matplotlib
+- Cartopy
