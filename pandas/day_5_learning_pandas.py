@@ -56,4 +56,6 @@ df.rename(columns={'ConvertedComp': 'SalaryUSD',
 
 df['Hobbyist'] = df['Hobbyist'].map({'Yes': True, 'No': False})
 
-print(df[filt][['Hobbyist', 'SalaryUSD', 'CodeLanguages']])
+print(df[filt]['CodeLanguages'].str.split(';', expand=True))
+
+# print(df[filt][['Hobbyist', 'SalaryUSD', 'CodeLanguages']])
