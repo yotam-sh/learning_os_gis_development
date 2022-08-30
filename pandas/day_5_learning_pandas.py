@@ -30,6 +30,8 @@ import pandas as pd
 
 # print(df[['first', 'last', 'sex', 'profession']].applymap(len)) # applymap works on same-type fields only or it throws errors
 
+#
+#
 # --> Use what learned in day 4 and day 5 on the stackoverflow csv:
 
 os.chdir(r'C:\Users\yotam\Documents\Python\material\for_future_lessons\2019survey_copy')
