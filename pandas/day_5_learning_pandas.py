@@ -54,4 +54,6 @@ filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWor
 df.rename(columns={'ConvertedComp': 'SalaryUSD',
                    'LanguageWorkedWith': 'CodeLanguages'}, inplace=True)
 
-print(df[filt][['SalaryUSD', 'CodeLanguages']])
+df['Hobbyist'] = df['Hobbyist'].map({'Yes': True, 'No': False})
+
+print(df[filt][['Hobbyist', 'SalaryUSD', 'CodeLanguages']])
