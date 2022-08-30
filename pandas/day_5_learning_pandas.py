@@ -18,11 +18,14 @@ filt = (df['profession'].str.contains('GIS', na=False))
 # Make first names lowercase
 df['first'] = df['first'].str.lower()
 
-# print(df[filt][['first', 'profession']])
 
-def prof_upper(prof):
-    return prof.upper()
+# # Instead of this:
+# def prof_upper(prof):
+#     return prof.upper()
 
-df['profession'] = df['profession'].apply(prof_upper)
+# df['profession'] = df['profession'].apply(prof_upper)
+
+# Use this:
+df['profession'] = df['profession'].apply(lambda x: x.upper())
 
 print(df)
