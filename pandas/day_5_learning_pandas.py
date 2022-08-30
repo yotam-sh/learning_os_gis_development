@@ -28,4 +28,4 @@ df['first'] = df['first'].str.lower()
 # Use this:
 df['profession'] = df['profession'].apply(lambda x: x.upper())
 
-print(df)
+print(df[['first', 'last', 'sex', 'profession']].applymap(len)) # applymap works on same-type fields only or it throws errors
