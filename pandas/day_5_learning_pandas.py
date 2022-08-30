@@ -3,20 +3,20 @@
 import os
 import numpy as np
 import pandas as pd
-from day_4_learning_pandas import classmates
+# from day_4_learning_pandas import classmates
 
 # Create a dataframe from the dictionary
-df = pd.DataFrame(classmates)
+# df = pd.DataFrame(classmates)
 
 # Remap the field names
-df.rename(columns={'first_name': 'first',
-                   'last_name': 'last'}, inplace=True)
+# df.rename(columns={'first_name': 'first',
+                #    'last_name': 'last'}, inplace=True)
 
 # Add condition
-filt = (df['profession'].str.contains('GIS', na=False))
+# filt = (df['profession'].str.contains('GIS', na=False))
 
 # Make first names lowercase
-df['first'] = df['first'].str.lower()
+# df['first'] = df['first'].str.lower()
 
 
 # # Instead of this:
@@ -26,7 +26,7 @@ df['first'] = df['first'].str.lower()
 # df['profession'] = df['profession'].apply(prof_upper)
 
 # Use this:
-df['profession'] = df['profession'].apply(lambda x: x.upper())
+# df['profession'] = df['profession'].apply(lambda x: x.upper())
 
 # print(df[['first', 'last', 'sex', 'profession']].applymap(len)) # applymap works on same-type fields only or it throws errors
 
@@ -47,3 +47,9 @@ df = pd.read_csv(wcsv_path, index_col='Respondent')
 schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index() # Sort by index 'Column'
 
 filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+
+# Rename ConvertedComp field to SalaryUSD
+df.rename(columns={'ConvertedComp': 'SalaryUSD',
+                   'LanguageWorkedWith': 'CodeLanguages'}, inplace=True)
+
+print(df[filt][['SalaryUSD', 'CodeLanguages']])
