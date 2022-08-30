@@ -50,25 +50,31 @@ schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index() # Sort by in
 
 filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
 
+# Set dataframe to include wanted columns only, with the filter applied
+df = df[filt][['Country', 'Hobbyist', 'ConvertedComp', 'YearsCodePro', 'Sexuality', 'LanguageWorkedWith']]
 
 # Rename ConvertedComp field to SalaryUSD
 df.rename(columns={'ConvertedComp': 'SalaryUSD',
                    'LanguageWorkedWith': 'CodeLanguages'}, inplace=True)
 
+# Remap Hobbyist column to bool values
 df['Hobbyist'] = df['Hobbyist'].map({'Yes': True, 'No': False})
 
 # Split CodeLanguages column
 # print(df[filt]['CodeLanguages'].str.split(';', expand=True))
 
-# Append a new row
+# # Append a new row
 df = df.append({'Country': 'Israel',
                 'Hobbyist': 'True',
                 'SalaryUSD': 64000,
-                'CodeLanguages': 'Python',
-                'SocialMedia': 'WhatsApp'},
+                'CodeLanguages': 'Python'},
                 ignore_index=True)
-                
-drop_filt = (df['Hobbyist'] == False) & (df['Country'] != 'Israel')
+
+# Drop columns based on filter
+drop_filt = (df['Hobbyist'] == False)
 df.drop(index=df[drop_filt].index, inplace=True)
 
-print(df[['Hobbyist', 'SalaryUSD', 'CodeLanguages', 'SocialMedia']])
+# Sort table by salary
+df.sort_values(by='SalaryUSD', ascending=False, inplace=True)
+
+print(df)
