@@ -10,7 +10,7 @@ df = pd.DataFrame(classmates)
 
 # Remap the field names
 df.rename(columns={'first_name': 'first',
-                   'last_name': 'last'}, inplace=True
+                   'last_name': 'last'}, inplace=True)
 
 # Add condition
 filt = (df['profession'].str.contains('GIS', na=False))
@@ -18,5 +18,11 @@ filt = (df['profession'].str.contains('GIS', na=False))
 # Make first names lowercase
 df['first'] = df['first'].str.lower()
 
-print(df[filt][['first', 'profession']])
+# print(df[filt][['first', 'profession']])
 
+def prof_upper(prof):
+    return prof.upper()
+
+df['profession'] = df['profession'].apply(prof_upper)
+
+print(df)
