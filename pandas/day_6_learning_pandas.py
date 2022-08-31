@@ -32,7 +32,7 @@ def csv_manip(dataframe):
     
     # Define filter and set the dataframe
     filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
-    df = df[filt][['Country', 'Hobbyist', 'ConvertedComp', 'YearsCodePro', 'Sexuality', 'LanguageWorkedWith']]
+    df = df[filt][['Age', 'Country', 'Hobbyist', 'ConvertedComp', 'YearsCodePro', 'Sexuality', 'LanguageWorkedWith', 'SocialMedia']]
 
     # Rename columns
     df.rename(columns={'ConvertedComp': 'SalaryUSD', 'LanguageWorkedWith': 'CodeLanguages'}, inplace=True)
@@ -48,12 +48,33 @@ def csv_manip(dataframe):
                 ignore_index=True)
     
     # Drop columns based on new defined filter
-    drop_filt = (df['Hobbyist'] == False)
-    df.drop(index=df[drop_filt].index, inplace=True)
+    # drop_filt = (df['Hobbyist'] == False)
+    # df.drop(index=df[drop_filt].index, inplace=True)
 
     # Sort the dataframe
     df.sort_values(by='SalaryUSD', ascending=False, inplace=True)
+
     return df
 
+def salary_calcs(dataframe):
+    usd_to_nis = 3.7391
+    median = df['SalaryUSD'].median()
+    median_nis = round((median * usd_to_nis), 2)
+
+    print(median_nis)
+
+def sexuality_count(dataframe):
+    print(dataframe['Sexuality'].value_counts())
+
+def socmed_count(dataframe):
+    print(dataframe['SocialMedia'].value_counts())
+
+def stats(dataframe):
+    salary_calcs(dataframe)
+    sexuality_count(dataframe)
+    socmed_count(dataframe)
+
 df, schema_df = check_csv(init_work())
-print(csv_manip(df))
+df = csv_manip(df)
+stats(df)
+
