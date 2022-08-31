@@ -11,7 +11,7 @@ def init_work():
     file_list = os.listdir(os.getcwd())
     return file_list
 
-def df_creator(work_csv, schema_csv):
+def df_creator(wcsv_path, scsv_path):
     df = pd.read_csv(wcsv_path, index_col='Respondent')
     schema_df = pd.read_csv(scsv_path, index_col='Column').sort_index() # Sort by index 'Column'
     return df, schema_df
@@ -28,6 +28,32 @@ def check_csv(file_list):
     return df_creator(wcsv_path, scsv_path)
 
 def csv_manip(dataframe):
-    something
+    df = dataframe
     
+    # Define filter and set the dataframe
+    filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+    df = df[filt][['Country', 'Hobbyist', 'ConvertedComp', 'YearsCodePro', 'Sexuality', 'LanguageWorkedWith']]
+
+    # Rename columns
+    df.rename(columns={'ConvertedComp': 'SalaryUSD', 'LanguageWorkedWith': 'CodeLanguages'}, inplace=True)
+
+    # Remap Hobbyist column values to bool
+    df['Hobbyist'] = df['Hobbyist'].map({'Yes': True, 'No': False})
+
+    # Add a new row
+    df = df.append({'Country': 'Israel',
+                'Hobbyist': 'True',
+                'SalaryUSD': 64000,
+                'CodeLanguages': 'Python'},
+                ignore_index=True)
+    
+    # Drop columns based on new defined filter
+    drop_filt = (df['Hobbyist'] == False)
+    df.drop(index=df[drop_filt].index, inplace=True)
+
+    # Sort the dataframe
+    df.sort_values(by='SalaryUSD', ascending=False, inplace=True)
+    return df
+
 df, schema_df = check_csv(init_work())
+print(csv_manip(df))
