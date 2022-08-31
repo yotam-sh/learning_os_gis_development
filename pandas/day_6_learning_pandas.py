@@ -1,5 +1,6 @@
 # Day 6
 
+from locale import normalize
 import os
 import numpy as np
 import pandas as pd
@@ -70,9 +71,13 @@ def new_manip(df):
     
     # Get mean and median salaries in Israel
     print(country_group['ConvertedComp'].agg(['mean', 'median']).loc['Israel'])
-    
+
     # Get sum of people who said they worked with Python
-    print(df.loc[df['Country'] == 'Israel']['LanguageWorkedWith'].str.contains('Python').sum())
+    print(df.loc[df['Country'] == 'Israel']['LanguageWorkedWith'].str.contains('Python', na=False).sum())
+
+    # Get % of people who said they worked with Python in each country
+    print(country_group['LanguageWorkedWith'].apply(lambda x: x.str.contains('Python', na=False).value_counts(normalize=True)))
+
 
 def salary_calcs(dataframe):
     usd_to_nis = 3.7391
