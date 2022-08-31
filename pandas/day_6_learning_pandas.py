@@ -82,7 +82,12 @@ def new_manip(df):
     sum_people = df['Country'].value_counts()
 
     new_df = pd.concat([sum_people, know_python], axis='columns', sort=False)
-    print(new_df)
+    new_df.rename(columns={'Country': 'NumRespondents', 'LanguageWorkedWith': 'NumKnowPython'}, inplace=True)
+    new_df['PercentWorkWithPython'] = round((new_df['NumKnowPython'] / new_df['NumRespondents']) * 100, 2)
+    filt = new_df['NumRespondents'] > 5
+    new_df = new_df[filt]
+    new_df.sort_values(by='PercentWorkWithPython', ascending=False, inplace=True)
+    print(new_df.head(15))
 
 
 def salary_calcs(dataframe):
