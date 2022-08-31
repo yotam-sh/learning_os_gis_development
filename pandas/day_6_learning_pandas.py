@@ -61,15 +61,18 @@ def csv_manip(dataframe):
     return df
 
 def new_manip(df):
-    # Create group
-    country_group = df.groupby('Country')
-    df = country_group
-
     # Apply filter
-    filt = (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+    filt = (df['ConvertedComp'] > 0) # & df['LanguageWorkedWith'].str.contains('Python', na=False)
     df = df[filt]
 
+    # Create group
+    country_group = df.groupby('Country')
     
+    # Get mean and median salaries in Israel
+    print(country_group['ConvertedComp'].agg(['mean', 'median']).loc['Israel'])
+    
+    # Get sum of people who said they worked with Python
+    print(df.loc[df['Country'] == 'Israel']['LanguageWorkedWith'].str.contains('Python').sum())
 
 def salary_calcs(dataframe):
     usd_to_nis = 3.7391
