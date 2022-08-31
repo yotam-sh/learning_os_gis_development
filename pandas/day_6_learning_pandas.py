@@ -70,13 +70,19 @@ def new_manip(df):
     country_group = df.groupby('Country')
     
     # Get mean and median salaries in Israel
-    print(country_group['ConvertedComp'].agg(['mean', 'median']).loc['Israel'])
+    # print(country_group['ConvertedComp'].agg(['mean', 'median']).loc['Israel'])
 
-    # Get sum of people who said they worked with Python
-    print(df.loc[df['Country'] == 'Israel']['LanguageWorkedWith'].str.contains('Python', na=False).sum())
+    # Get sum of people who said they worked with Python in Israel
+    # print(df.loc[df['Country'] == 'Israel']['LanguageWorkedWith'].str.contains('Python', na=False).sum())
 
     # Get % of people who said they worked with Python in each country
-    print(country_group['LanguageWorkedWith'].apply(lambda x: x.str.contains('Python', na=False).value_counts(normalize=True)))
+    know_python = country_group['LanguageWorkedWith'].apply(lambda x: x.str.contains('Python', na=False).sum())
+
+    # Get sum of people in each country in the survey
+    sum_people = df['Country'].value_counts()
+
+    new_df = pd.concat([sum_people, know_python], axis='columns', sort=False)
+    print(new_df)
 
 
 def salary_calcs(dataframe):
