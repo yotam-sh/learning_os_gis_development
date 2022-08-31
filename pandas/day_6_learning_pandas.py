@@ -30,8 +30,12 @@ def check_csv(file_list):
 def csv_manip(dataframe):
     df = dataframe
     
+    # Create group by country
+    country_grp = df.groupby(['Country'])
     # Define filter and set the dataframe
-    filt = (df["Country"] == "Israel") & (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+    filt = (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+    # Set df as Israel data group
+    df = country_grp.get_group('Israel')
     df = df[filt][['Age', 'Country', 'Hobbyist', 'ConvertedComp', 'YearsCodePro', 'Sexuality', 'LanguageWorkedWith', 'SocialMedia']]
 
     # Rename columns
