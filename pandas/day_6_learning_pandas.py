@@ -59,15 +59,17 @@ def csv_manip(dataframe):
 def salary_calcs(dataframe):
     usd_to_nis = 3.7391
     median = df['SalaryUSD'].median()
-    median_nis = round((median * usd_to_nis), 2)
+    median_nis = int((median * usd_to_nis))
 
-    print(median_nis)
+    print(f'\nThe median salary in Israeli Shekels is: {median_nis:,}\n')
 
 def sexuality_count(dataframe):
-    print(dataframe['Sexuality'].value_counts())
+    sex_count = dataframe['Sexuality'].value_counts()
+    print(f'Types of sexualities between the survey participants in Israel:\n{sex_count}\n')
 
 def socmed_count(dataframe):
-    print(dataframe['SocialMedia'].value_counts())
+    socmed_counts = dataframe['SocialMedia'].value_counts()
+    print(f'Social media platforms selected as mostly used by survey participants:\n{socmed_counts}\n')
 
 def stats(dataframe):
     salary_calcs(dataframe)
