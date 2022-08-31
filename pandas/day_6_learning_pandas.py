@@ -60,6 +60,17 @@ def csv_manip(dataframe):
 
     return df
 
+def new_manip(df):
+    # Create group
+    country_group = df.groupby('Country')
+    df = country_group
+
+    # Apply filter
+    filt = (df['ConvertedComp'] > 0) & df['LanguageWorkedWith'].str.contains('Python', na=False)
+    df = df[filt]
+
+    
+
 def salary_calcs(dataframe):
     usd_to_nis = 3.7391
     median = df['SalaryUSD'].median()
@@ -81,6 +92,7 @@ def stats(dataframe):
     socmed_count(dataframe)
 
 df, schema_df = check_csv(init_work())
-df = csv_manip(df)
-stats(df)
+df = new_manip(df)
+# df = csv_manip(df)
+# stats(df)
 
