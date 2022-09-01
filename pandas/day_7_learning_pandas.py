@@ -33,6 +33,10 @@ def data_editing(df):
     important_columns = ['Age', 'ConvertedComp', 'Country', 'YearsCode', 'YearsCodePro']
     df.dropna(axis='index', how='any', subset=important_columns, inplace=True)
 
+    df['YearsCode'].replace(to_replace=['Less than 1 year', 'More than 50 years'], value=[0, 51], inplace=True)
+    print(df['YearsCode'].unique())
+
+
     return df
 ##
 
