@@ -30,14 +30,17 @@ def check_csv(file_list):
 def data_editing(df):
 
     # Drop NaN rows
+    global important_columns
     important_columns = ['Age', 'ConvertedComp', 'Country', 'YearsCode', 'YearsCodePro']
     df.dropna(axis='index', how='any', subset=important_columns, inplace=True)
 
     df['YearsCode'].replace(to_replace=['Less than 1 year', 'More than 50 years'], value=[0, 51], inplace=True)
-    print(df['YearsCode'].unique())
-
-
-    return df
+    try:
+        df['YearsCode'] = df['YearsCode'].astype(float)
+    except TypeError:
+        print(TypeError)
+    
+    return df[important_columns]
 ##
 
 df, schema_df = check_csv(init_work())
