@@ -80,12 +80,18 @@ def new_manip(df):
     # Get sum of people in each country in the survey
     sum_people = df['Country'].value_counts()
 
+    # Create new DataFrame from know_python and sum_people series
     new_df = pd.concat([sum_people, know_python], axis='columns', sort=False)
     new_df.rename(columns={'Country': 'NumRespondents', 'LanguageWorkedWith': 'NumKnowPython'}, inplace=True)
+
+    # Add new column and insert calculation of percentage of people that know Python in each country
     new_df['PercentWorkWithPython'] = round((new_df['NumKnowPython'] / new_df['NumRespondents']) * 100, 2)
+
+    # Apply filter and sort
     filt = new_df['NumRespondents'] > 5
     new_df = new_df[filt]
     new_df.sort_values(by='PercentWorkWithPython', ascending=False, inplace=True)
+    
     print(new_df.head(15))
 
 
