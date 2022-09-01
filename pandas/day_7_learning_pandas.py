@@ -27,7 +27,14 @@ def check_csv(file_list):
 
     return df_creator(wcsv_path, scsv_path)
 
+def data_editing(df):
+
+    # Drop NaN rows
+    important_columns = ['Age', 'ConvertedComp', 'Country', 'YearsCode', 'YearsCodePro']
+    df.dropna(axis='index', how='any', subset=important_columns, inplace=True)
+
+    return df
 ##
 
 df, schema_df = check_csv(init_work())
-print(df)
+print(data_editing(df))
