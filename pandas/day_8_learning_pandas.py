@@ -16,20 +16,25 @@ def init_work():
 def df_creator(file_list, csv_name):
     for file in file_list:
         if file == csv_name:
-            # Set lambda function for date-time conversion
+            # Set parameters to create a DataFrame
             d_parser = lambda x: datetime.strptime(x, '%Y-%m-%d %I-%p')
-            # Read csv with date-time conversion
-            df = pd.read_csv(os.path.join(os.getcwd(), csv_name), parse_dates=['Date'], date_parser=d_parser)
+            csv_path = os.path.join(os.getcwd(), csv_name)
+
+            # Create a DataFrame
+            df = pd.read_csv(csv_path, index_col='Date', parse_dates=['Date'], date_parser=d_parser)
+
             return df
 
-def data_editing(df):
+# def data_editing(df):
     # Another way of coverting to date-time
     # df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d %I-%p')
-    return df
+    # filt = (df['Date'] >= pd.to_datetime('2019-01-01')) & (df['Date'] < pd.to_datetime('2020-01-01'))
+
+    # return df.loc[filt]
 
 ##
 
 file_list, csv_name = init_work()
 df = df_creator(file_list, csv_name)
-# data_editing(df)
-print(df.loc[0, 'Date'].day_name())
+# print(data_editing(df))
+print(df)
