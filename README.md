@@ -10,3 +10,5 @@ Plan:
 - NumPy
 - Matplotlib
 - Cartopy
+- GeoDjango
+  ↳ Django
