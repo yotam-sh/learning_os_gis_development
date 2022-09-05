@@ -21,20 +21,11 @@ def df_creator(file_list, csv_name):
     
 
 def data_editing(df):
+    return
 
-    # Drop NaN rows
-    global important_columns
-    important_columns = ['Age', 'ConvertedComp', 'Country', 'YearsCode', 'YearsCodePro']
-    df.dropna(axis='index', how='any', subset=important_columns, inplace=True)
-
-    df['YearsCode'].replace(to_replace=['Less than 1 year', 'More than 50 years'], value=[0, 51], inplace=True)
-    try:
-        df['YearsCode'] = df['YearsCode'].astype(float)
-    except TypeError:
-        print(TypeError)
-    
-    return df[important_columns]
 ##
+
 file_list, csv_name = init_work()
 df = df_creator(file_list, csv_name)
-# print(data_editing(df))
+
+something = data_editing
