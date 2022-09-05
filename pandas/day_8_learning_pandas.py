@@ -21,11 +21,12 @@ def df_creator(file_list, csv_name):
     
 
 def data_editing(df):
-    return
+    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d %I-%p')
+    return df
 
 ##
 
 file_list, csv_name = init_work()
 df = df_creator(file_list, csv_name)
-
-something = data_editing
+data_editing(df)
+print(df['Date'])
