@@ -22,8 +22,6 @@ def df_creator(file_list, csv_name):
             df = pd.read_csv(os.path.join(os.getcwd(), csv_name), parse_dates=['Date'], date_parser=d_parser)
             return df
 
-    
-
 def data_editing(df):
     # Another way of coverting to date-time
     # df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d %I-%p')
