@@ -25,16 +25,16 @@ def df_creator(file_list, csv_name):
 
             return df
 
-# def data_editing(df):
+def data_editing(df):
     # Another way of coverting to date-time
     # df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d %I-%p')
     # filt = (df['Date'] >= pd.to_datetime('2019-01-01')) & (df['Date'] < pd.to_datetime('2020-01-01'))
 
-    # return df.loc[filt]
+    df = df.resample('W').agg({'Close': 'mean', 'High': 'max', 'Low': 'min', 'Volume': 'sum'})
+    return df
 
 ##
 
 file_list, csv_name = init_work()
 df = df_creator(file_list, csv_name)
-# print(data_editing(df))
-print(df)
+print(data_editing(df))
