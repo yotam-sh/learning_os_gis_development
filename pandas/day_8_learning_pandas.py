@@ -29,4 +29,4 @@ def data_editing(df):
 file_list, csv_name = init_work()
 df = df_creator(file_list, csv_name)
 data_editing(df)
-print(df['Date'])
+print(df.loc[0, 'Date'].day_name())
