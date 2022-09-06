@@ -1,3 +1,4 @@
+from operator import index
 import os
 import numpy as np
 import pandas as pd
@@ -12,8 +13,30 @@ def load_data():
 
     # Set work and schema csv names
     main_csv = 'survey_results_public.csv'
-    schema_csv = 'survey_results_schema.csv'
 
-    print(workdir_files)
+    # File paths
+    main_csv_path = os.path.join(os.getcwd(), main_csv)
 
-load_data()
+    try:
+        # Load dataframes
+        df = pd.read_csv(main_csv_path, index_col='ResponseId')
+    except Exception as e:
+        print(e)
+    else:
+        return df
+
+def work_with_data(df):
+    # Convert 'CompFreq' values to be Monthly and Yearly values
+    comp_filt = (df['CompFreq'])
+
+    # Filter
+    filt = (df['Country'] == 'Israel') & (df['CompTotal'] > 0)
+    relevant_cols = ['Country', 'CompTotal', 'YearsCode', 'YearsCodePro', 'EdLevel', 'CompFreq']
+
+    filter_df = df[filt][relevant_cols]
+
+    return filter_df
+
+## 
+
+print(load_data())
