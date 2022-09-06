@@ -23,7 +23,7 @@ def df_creator(file_list, wcsv_name, scsv_name):
                 wcsv_path = os.path.join(os.getcwd(), wcsv_name)
 
                 # Create a DataFrame
-                df = pd.read_csv(wcsv_path, index_col='Date', parse_dates=['Date'], date_parser=d_parser)
+                df = pd.read_csv(wcsv_path, index_col='Respondent')
             except Exception as e:
                 print(e)
         
@@ -41,5 +41,6 @@ def data_editing(df):
     
 ##
 
-df, schema_df = df_creator(init_work())
-print(data_editing(df))
+file_list, wcsv_name, scsv_name= init_work()
+df, schema_df = df_creator(file_list, wcsv_name, scsv_name)
+print(df)
