@@ -37,10 +37,12 @@ def df_creator(file_list, wcsv_name, scsv_name):
     return df, schema_df
 
 def data_editing(df):
-    return
+    filt = (df['Country'] == 'Israel')
+    israel_df = df.loc[filt]
+    return israel_df
     
 ##
 
 file_list, wcsv_name, scsv_name= init_work()
 df, schema_df = df_creator(file_list, wcsv_name, scsv_name)
-print(df)
+print(data_editing(df))
