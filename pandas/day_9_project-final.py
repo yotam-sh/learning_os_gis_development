@@ -27,16 +27,26 @@ def load_data():
 
 def work_with_data(df):
     # Convert 'CompFreq' values to be Monthly and Yearly values
-    comp_filt = (df['CompFreq'])
+    comp_times = ['Yearly', 'Weekly']
+    multiplier = [12, 4]
+    sign = ['/', '*']
 
+    for n in range(2):
+        comp_filt = (df['CompFreq'] == comp_times[n])
+        df['CompTotal'].replace(to_replace=[comp_times[n], 'CompFreq'], value=[lambda x: f'{x}{sign[n]}{multiplier[n]}', 'Monthly'], inplace=True)
+
+    # print(df[df['Country'] == 'Israel'].value_counts('CompFreq'))
     # Filter
     filt = (df['Country'] == 'Israel') & (df['CompTotal'] > 0)
     relevant_cols = ['Country', 'CompTotal', 'YearsCode', 'YearsCodePro', 'EdLevel', 'CompFreq']
 
     filter_df = df[filt][relevant_cols]
 
-    return filter_df
+    print(filter_df.value_counts('CompFreq'))
+
+    # return filter_df
 
 ## 
 
-print(load_data())
+df = load_data()
+df = work_with_data(df)
