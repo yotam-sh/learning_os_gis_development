@@ -8,7 +8,7 @@ from datetime import datetime
 
 def load_data():
     # Set workspace and get list of files
-    os.chdir(r'C:\Users\yotam\Documents\Python\material\for_future_lessons\stack-overflow-developer-survey-2022')
+    os.chdir(r'C:\Users\user\Desktop\stack-overflow-developer-survey-2022')
     workdir_files = os.listdir(os.getcwd())
 
     # Set work and schema csv names
@@ -26,23 +26,25 @@ def load_data():
         return df
 
 def work_with_data(df):
+
     # Convert 'CompFreq' values to be Monthly and Yearly values
-    comp_times = ['Yearly', 'Weekly']
-    multiplier = [12, 4]
-    sign = ['/', '*']
+    comp_times = ['Yearly', 'Monthly', 'Weekly']
+    multiplier = [1, 12, 48]
+    sign = ['*', '*', '*']
 
-    for n in range(2):
-        comp_filt = (df['CompFreq'] == comp_times[n])
-        df['CompTotal'].replace(to_replace=[comp_times[n], 'CompFreq'], value=[lambda x: f'{x}{sign[n]}{multiplier[n]}', 'Monthly'], inplace=True)
-
+    df['YearlySalary'] = ''
+    for n in range(3):
+        conv_filt = (df['CompTotal'] > 0) & (df['CompFreq'] == comp_times[n])
+        df[conv_filt]['YearlySalary'] = df['YearlySalary'].replace(to_replace='', value=df[conv_filt]['CompTotal'] * multiplier[n])
+        # print(df[conv_filt]['YearlySalary'].head())
     # print(df[df['Country'] == 'Israel'].value_counts('CompFreq'))
     # Filter
     filt = (df['Country'] == 'Israel') & (df['CompTotal'] > 0)
-    relevant_cols = ['Country', 'CompTotal', 'YearsCode', 'YearsCodePro', 'EdLevel', 'CompFreq']
+    relevant_cols = ['YearsCode', 'YearsCodePro', 'EdLevel', 'YearlySalary']
 
     filter_df = df[filt][relevant_cols]
 
-    print(filter_df.value_counts('CompFreq'))
+    print(filter_df.head())
 
     # return filter_df
 
