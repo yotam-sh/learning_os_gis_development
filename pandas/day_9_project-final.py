@@ -8,7 +8,7 @@ from datetime import datetime
 
 def load_data():
     # Set workspace and get list of files
-    os.chdir(r'C:\Users\user\Desktop\stack-overflow-developer-survey-2022')
+    os.chdir(r'C:\Users\yotam\Documents\Python\material\for_future_lessons\stack-overflow-developer-survey-2022')
     workdir_files = os.listdir(os.getcwd())
 
     # Set work and schema csv names
@@ -26,21 +26,13 @@ def load_data():
         return df
 
 def work_with_data(df):
+    # Convert yearly USD salary to NIS
+    nis_rate = 3.42
+    df['YearlyCompNIS'] = [i * nis_rate for i in df.ConvertedCompYearly]
 
-    # Convert 'CompFreq' values to be Monthly and Yearly values
-    comp_times = ['Yearly', 'Monthly', 'Weekly']
-    multiplier = [1, 12, 48]
-    sign = ['*', '*', '*']
-
-    df['YearlySalary'] = ''
-    for n in range(3):
-        conv_filt = (df['CompTotal'] > 0) & (df['CompFreq'] == comp_times[n])
-        df[conv_filt]['YearlySalary'] = df['YearlySalary'].replace(to_replace='', value=df[conv_filt]['CompTotal'] * multiplier[n])
-        # print(df[conv_filt]['YearlySalary'].head())
-    # print(df[df['Country'] == 'Israel'].value_counts('CompFreq'))
     # Filter
-    filt = (df['Country'] == 'Israel') & (df['CompTotal'] > 0)
-    relevant_cols = ['YearsCode', 'YearsCodePro', 'EdLevel', 'YearlySalary']
+    filt = (df['Country'] == 'Israel') & (df['ConvertedCompYearly'] > 0)
+    relevant_cols = ['YearsCode', 'YearsCodePro', 'EdLevel', 'YearlyCompNIS']
 
     filter_df = df[filt][relevant_cols]
 
