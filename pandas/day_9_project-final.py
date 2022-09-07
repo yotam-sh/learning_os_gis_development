@@ -3,6 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 ##
 
@@ -52,4 +53,3 @@ def work_with_data(df):
 
 df = load_data()
 df = work_with_data(df)
-print(df.value_counts(['EdLevel']))
