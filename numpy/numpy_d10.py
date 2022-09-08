@@ -4,54 +4,63 @@
 
 import numpy as np
 
-#
+### --> The basics
 
-a = np.array([1, 2, 3], dtype='int16')
-b= np.array([[9.0, 8.0, 5.0], [6.0, 5.0, 4.0]])
+def basics():
+    a = np.array([1, 2, 3], dtype='int16')
+    b= np.array([[9.0, 8.0, 5.0], [6.0, 5.0, 4.0]])
 
-# Get dimension
-print(f'\nDimension: {b.ndim}') # --> 2 because it's two lists
+    # Get dimension
+    print(f'\nDimension: {b.ndim}') # --> 2 because it's two lists
 
-# Get shape
-print(f'Shape: {b.shape}') # --> (2, 3) because it's 2 lists containing 3 values (size 3)
+    # Get shape
+    print(f'Shape: {b.shape}') # --> (2, 3) because it's 2 lists containing 3 values (size 3)
 
-# Get type
-print(f'Array "a" type: {a.dtype}') # --> int16
-print(f'Array "b" type: {b.dtype}') # --> float64
+    # Get type
+    print(f'Array "a" type: {a.dtype}') # --> int16
+    print(f'Array "b" type: {b.dtype}') # --> float64
 
-# Get size
-print(f'Array "a" size: {a.itemsize}')
+    # Get size
+    print(f'Array "a" size: {a.itemsize}')
 
-# Get total size
-print(f'Total size array "a": {a.size * a.itemsize}')
-print(f'Total size array "a": {a.nbytes}') # --> array.nbytes == array.size * array.itemsize
+    # Get total size
+    print(f'Total size array "a": {a.size * a.itemsize}')
+    print(f'Total size array "a": {a.nbytes}') # --> array.nbytes == array.size * array.itemsize
 
-##########
+### --> Accessing / changing elements (slicing)
 
-a = np.array([[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14]])
+def slicing():
+    a = np.array([[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14]])
 
-# Get specific element [row, column]
-print(f'6th element in the 2nd row: {a[1, 5]}') # --> Works the same as with lists, with negative indices
+    # Get specific element [row, column]
+    print(f'6th element in the 2nd row: {a[1, 5]}') # --> Works the same as with lists, with negative indices
 
-# Get a specific row
-print(f'Get all the first row: {a[0, :]}')
+    # Get a specific row
+    print(f'Get all the first row: {a[0, :]}')
 
-# Get a specific column
-print(f'Get all the 5th indices: {a[:, 5]}')
+    # Get a specific column
+    print(f'Get all the 5th indices: {a[:, 5]}')
 
-# Getting fancy with slicing
-print(f'Get every 3rd item in the 2nd row: {a[1, 0::3]}') # Slice properties --> array[row, column _startindex:endindex:step]
+    # Getting fancy with slicing
+    print(f'Get every 3rd item in the 2nd row: {a[1, 0::3]}') # Slice properties --> array[row, column _startindex:endindex:step]
 
-# Change an item
-a[1, 0] = 16
-print(f'New value: {a[1, 0]}')
+    # Change an item
+    a[1, 0] = 16
+    print(f'New value: {a[1, 0]}')
 
-# Change all items in a column:
-a[:, 6] = 0
-print(f'Array with new values:\n{a}')
+    # Change all items in a column:
+    a[:, 6] = 0
+    print(f'Array with new values:\n{a}')
 
-# Work with 3-D array
-b = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
-print(f'3-D array:\n{b}')
-# Get specific element (work outside --> in)
-print(f'First set, second row, second item: {b[0, 1, 1]}')
+    # Work with 3-D array
+    b = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+    print(f'3-D array:\n{b}')
+    # Get specific element (work outside --> in)
+    print(f'First set, second row, second item: {b[0, 1, 1]}')
+    print(f'Get every first item from every row in all sets:\n{b[:, :, 0]}')
+
+    # Replace in 3-D array
+    b[:, :, 1] = -1
+    print(f'Replace all second values in every row and array:\n{b}')
+
+### Initializing different arrays
