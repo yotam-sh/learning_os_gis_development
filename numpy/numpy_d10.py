@@ -125,4 +125,24 @@ def np_math():
     # Get sin(), cos(), tan() values of each item
     print(f'Sin: {np.sin(a)}\nCosin: {np.cos(a)}\nTangens: {np.tan(a)}')
 
-### Linear Algebra
+### Statistics
+
+def np_statistics():
+    stats = np.array([[1, 2, 3],[4, 5, 6]])
+
+    # Minimum/Maximum value
+    print(f'{np.min(stats)}\t{np.max(stats)}')
+
+    # Minimum/Maximum value per-row in a multi-row array
+    print(f'{np.min(stats, axis=1)}\t{np.max(stats, axis=0)}')
+
+    # Minimum/Maximum value per-column in a multi-column array
+    print(f'{np.min(stats, axis=0)}\t{np.max(stats, axis=1)}')
+
+    # Sum of all items in matrix
+    print(np.sum(stats))
+
+    # sum of all items in a row / column
+    print(f'{np.sum(stats, axis=1)}\t{np.sum(stats, axis=0)}')
+
+### Reorganizing arrays
