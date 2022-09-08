@@ -35,3 +35,23 @@ print(f'6th element in the 2nd row: {a[1, 5]}') # --> Works the same as with lis
 
 # Get a specific row
 print(f'Get all the first row: {a[0, :]}')
+
+# Get a specific column
+print(f'Get all the 5th indices: {a[:, 5]}')
+
+# Getting fancy with slicing
+print(f'Get every 3rd item in the 2nd row: {a[1, 0::3]}') # Slice properties --> array[row, column _startindex:endindex:step]
+
+# Change an item
+a[1, 0] = 16
+print(f'New value: {a[1, 0]}')
+
+# Change all items in a column:
+a[:, 6] = 0
+print(f'Array with new values:\n{a}')
+
+# Work with 3-D array
+b = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+print(f'3-D array:\n{b}')
+# Get specific element (work outside --> in)
+print(f'First set, second row, second item: {b[0, 1, 1]}')
