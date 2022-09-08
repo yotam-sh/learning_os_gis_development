@@ -8,8 +8,9 @@ Tracking my progress as I learn various new libraries:
 - 8th of September - Started learning NumPy
 
 Plan:
+- Pandas      -- started 23rd of August
+- NumPy       -- started 8th of September
 - GeoPandas
-- NumPy
 - Matplotlib
 - Shapely
 - Cartopy
