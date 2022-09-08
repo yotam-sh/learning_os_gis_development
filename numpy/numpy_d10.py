@@ -105,3 +105,24 @@ def freeCodeCampSolution():
     output[1:-1, 1:-1] = z
     print(output)
 
+### Mathematics
+
+def np_math():
+    a = np.array([1, 2, 3, 4])
+
+    # Addition --> Adds the number specified to each item of the array
+    print(a + 2)
+
+    # Subtract --> Subtracts the number specified to each item of the array
+    print(a - 2)
+
+    # Multiplication --> Multiplies by the number specified each item of the array
+    print(a * 2)
+
+    # Division --> Divides each item of the array by the number specified
+    print(a / 2)
+
+    # Get sin(), cos(), tan() values of each item
+    print(f'Sin: {np.sin(a)}\nCosin: {np.cos(a)}\nTangens: {np.tan(a)}')
+
+### Linear Algebra
