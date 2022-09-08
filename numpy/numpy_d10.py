@@ -65,17 +65,43 @@ def slicing():
 
 ### Initializing different arrays
 
-# All 0s matrix - np.zeros()
-print(f'5 sets of 1 row and 5 items:\n{np.zeros((5, 1, 5))}')
+def initializing_diff_arrays():
+    # All 0s matrix --> np.zeros()
+    print(f'5 sets of 1 row and 5 items:\n{np.zeros((5, 1, 5))}')
 
-# all 1s matrix - np.ones()
-print(f'3 sets of 3 rows and 3 items:\n{np.ones((3, 3, 3))}')
+    # all 1s matrix --> np.ones()
+    print(f'3 sets of 3 rows and 3 items:\n{np.ones((3, 3, 3))}')
 
-# Any other matrix - np.full()
-print(f'2 sets of 2 row and 10 items:\n{np.full((2, 2, 10), -1)}')
+    # Any other matrix --> np.full()
+    print(f'2 sets of 2 row and 10 items:\n{np.full((2, 2, 10), -1)}')
 
-# Random decimal numbers
-print(np.random.rand(4, 2))
+    # Random decimal numbers
+    print(np.random.rand(4, 2))
 
-# Random integer values - np.random.randint(startvalue, endvalue, size=(array, size))
-print(np.random.randint(-10, 10, size=(2, 10)))
+    # Random integer values --> np.random.randint(startvalue, endvalue, size=(array, size))
+    print(np.random.randint(-10, 10, size=(2, 10)))
+
+    # Identity matrix
+    print(np.identity(10))
+
+    # Repeat an array --> np.repeat(a=array, repeats=times_repeated, axis=(1, 0))
+    arr = np.array([[1, 2, 3, 4]])
+    r1 = np.repeat(arr, 3, axis=0)
+    print(r1)
+
+### Problem #1
+
+def my_solution():
+    cube = np.array([np.zeros(5)], dtype='int16').repeat(5, axis=0)
+    cube[:, 0:5:4] = np.ones(1)
+    cube[0:5:4, :] = np.ones(1)
+    cube[2, 2] = np.full(1, 9)
+    print(cube)
+
+def freeCodeCampSolution():
+    output = np.ones((5, 5))
+    z = np.zeros((3, 3))
+    z[1, 1] = 9
+    output[1:-1, 1:-1] = z
+    print(output)
+
