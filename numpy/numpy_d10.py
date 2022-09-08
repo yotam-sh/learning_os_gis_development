@@ -146,3 +146,23 @@ def np_statistics():
     print(f'{np.sum(stats, axis=1)}\t{np.sum(stats, axis=0)}')
 
 ### Reorganizing arrays
+
+def reorganize():
+    # Array in (2, 4) shape
+    before = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+    # Reshaping into 3-D (2, 2, 2) array --> can reshape into any array as long as number of values match (2, 4) / (4, 2) / (1, 8)...
+    after = before.reshape((2, 2, 2))
+    print(after)
+
+    # Vertically stacking vectors
+    vec1 = np.array([1, 2, 3, 4])
+    vec2 = np.array([5, 6, 7, 8])
+
+    print(np.vstack([(vec1, vec2) * 4]))
+
+    # Horizontally stacking
+    hor1 = np.zeros((3, 3))
+    hor2 = np.ones((3, 2))
+
+    print(np.hstack((hor1, hor2)))
