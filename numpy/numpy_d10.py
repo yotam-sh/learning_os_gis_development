@@ -166,3 +166,20 @@ def reorganize():
     hor2 = np.ones((3, 2))
 
     print(np.hstack((hor1, hor2)))
+
+### Load data from file, boolean masking and advanced indexing
+
+def load_data():
+    # Set file path variable
+    fpath = r"C:\Users\yotam\Documents\Python\material\numpy_intro_number_list.txt"
+
+    # Load data from path --> np.genfromtxt(pathlike=path, delimiter=what_separates_numbers, dtype=type_of_data_to_load_numbers_in)
+    filedata = np.genfromtxt(fname=fpath, delimiter='\t', dtype='int16')
+
+    # Index by query
+    print(filedata[filedata > 50])
+
+    # Index with a list
+    print(filedata[[0, 1, 2, 3, 4]])
+
+### Problem #2
