@@ -64,3 +64,18 @@ def slicing():
     print(f'Replace all second values in every row and array:\n{b}')
 
 ### Initializing different arrays
+
+# All 0s matrix - np.zeros()
+print(f'5 sets of 1 row and 5 items:\n{np.zeros((5, 1, 5))}')
+
+# all 1s matrix - np.ones()
+print(f'3 sets of 3 rows and 3 items:\n{np.ones((3, 3, 3))}')
+
+# Any other matrix - np.full()
+print(f'2 sets of 2 row and 10 items:\n{np.full((2, 2, 10), -1)}')
+
+# Random decimal numbers
+print(np.random.rand(4, 2))
+
+# Random integer values - np.random.randint(startvalue, endvalue, size=(array, size))
+print(np.random.randint(-10, 10, size=(2, 10)))
