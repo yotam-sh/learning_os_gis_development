@@ -183,3 +183,17 @@ def load_data():
     print(filedata[[0, 1, 2, 3, 4]])
 
 ### Problem #2
+
+def my_solution_2():
+    # Problem is a (6, 5) matrix with values from 1 to 30
+    arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25], [26, 27, 28, 29, 30]])
+
+    # How to index 11, 12, 16, 17
+    print(arr[2:4, 0:2])
+
+    # How to index 2, 8, 14, 20
+    cross_index = [arr[n, n+1] for n in range(4)]
+    print(cross_index)
+
+    # How to index (4, 5), (29, 30), (24, 25)
+    print(arr[[0, -1, -2], 3:])
