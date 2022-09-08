@@ -25,3 +25,13 @@ print(f'Array "a" size: {a.itemsize}')
 # Get total size
 print(f'Total size array "a": {a.size * a.itemsize}')
 print(f'Total size array "a": {a.nbytes}') # --> array.nbytes == array.size * array.itemsize
+
+##########
+
+a = np.array([[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14]])
+
+# Get specific element [row, column]
+print(f'6th element in the 2nd row: {a[1, 5]}') # --> Works the same as with lists, with negative indices
+
+# Get a specific row
+print(f'Get all the first row: {a[0, :]}')
