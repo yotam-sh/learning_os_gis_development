@@ -17,3 +17,4 @@ Plan:
 - GeoDjango
   
   ↳ Django
+- Folium
